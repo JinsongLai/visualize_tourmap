@@ -1,0 +1,275 @@
+// css 初始化
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+body {
+    background: url(../images/bg.jpg)
+    no-repeat top center;
+    line-height: 1.15;
+}
+// 声明字体
+@font-face {
+    font-family: electronicFont;
+    src: url(../font/DS-DIGIT.TTF);
+}
+header {
+    position: relative;  // 子绝父相对
+    height: 1.25rem;
+    background: url(../images/head_bg.png)
+    no-repeat;
+    background-size: 100% 100%;
+    h1 {
+        font-size: .475rem;
+        color: #fff;
+        text-align: center;
+        line-height: 1rem;
+    }
+    .showTime {
+        position: absolute;
+        top: 0;
+        right: .375rem;
+        line-height: .9375rem;
+        color: rgb(255, 255, 255, 0.7);
+        font-size: .25rem;
+    }
+}
+
+.mainbox {
+    display: flex;  // flex布局， 父亲设为flex
+    min-width: 1024px;
+    max-width: 1920px;
+    margin: 0 auto;
+    height: 3.75rem;
+    // background-color: pink;
+    padding: .125rem .125rem 0;
+    .column {
+        flex: 3;
+    }
+    .column:nth-child(2) {
+        flex: 5;
+        margin: 0 .125rem .1875rem;  // 上 左右 下
+       // overflow: hidden;      // 超出部分隐藏
+    }
+    .panel {
+        position: relative;
+        height: 3.875rem;
+        margin-bottom: .1875rem;
+        // background-color: pink;
+        border: 1px solid rgba(25,186,139,0.17);
+        background: url(../images/line.png) rgba(255,255,255,0.04);
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid #02a6b5;
+            border-top: 2px solid #02a6b5;
+            content: ""; // 没有content不显示
+        }
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #02a6b5;
+            border-top: 2px solid #02a6b5;
+            content: "";
+        }
+        .panel-fooster {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            &::before {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-left: 2px solid #02a6b5;
+                    border-bottom: 2px solid #02a6b5;
+                    content: ""; // 没有content不显示
+                }
+            
+                &::after {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-right: 2px solid #02a6b5;
+                    border-bottom: 2px solid #02a6b5;
+                    content: "";
+                }
+        }
+        h2 {
+            height: .6rem;
+            color: #fff;
+            line-height: .6rem;
+            text-align: center;
+            font-size: .25rem;
+            font-weight: 400; // 不用太粗
+        }
+        .chart {
+            height: 3rem;
+            // background-color: pink;
+        }
+    }
+}
+
+.no {
+    background: rgba(101,132,226,0.1);
+    padding: .1875rem;
+    .no-hd {
+        position: relative;
+        border: 1px solid rgba(25,186,139,0.17);
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top: 2px solid #02a6b5;
+            border-left: 2px solid #02a6b5;
+            width: 30px;
+            height: 10px;
+            content: "";
+        }
+        &::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border-right: 2px solid #02a6b5;
+            border-bottom: 2px solid #02a6b5;
+            width: 30px;
+            height: 10px;
+            content: "";
+        }
+        ul {
+            display: flex;
+            li {
+                position: relative;
+                flex: 1;
+                color: white;
+                line-height: 1rem;
+                font-size: .875rem;
+                text-align: center;
+                font-family: electronicFont;
+                &::after {
+                    position: absolute;
+                    top: 25%;
+                    right: 0;
+                    height: 50%;
+                    width: 1px;
+                    background-color: rgba(255,255,255,0.2);
+                    content: "";
+                }
+            }
+        }
+    }
+    .no-bd {
+        ul {
+            display: flex;
+            li {
+                flex: 1;
+                text-align: center;
+                color: rgba(255,255,255,0.7);
+                font-size: .225rem;
+                height: .5rem;
+                line-height: .5rem;
+                padding-top: .125rem;
+            }
+        }
+    }
+}
+
+.map {
+    height: 10.125rem;
+    position: relative;
+    .map1 {
+        width: 6.475rem;
+        height: 6.475rem;  
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: url(../images/map.png);
+        background-size: 100%; // 全部显示， 不然部分显示
+        opacity: 0.3;
+    }
+    .map2 {                    // map2需要压住map1 map2在map1下方，默认压住
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: url(../images/lbx.png);
+        width: 8.0375rem;
+        height: 8.0375rem;
+        animation: rotate_map2 15s linear infinite;
+        background-size: 100%;
+        opacity: 0.6;
+    }
+    .map3 {
+        // map2需要压住map1 map2在map1下方，默认压住
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: url(../images/jt.png);
+        width: 7.075rem;
+        height: 7.075rem;
+        animation: rotate_map3 10s linear infinite;
+        background-size: 100%;
+        opacity: 0.6;
+    }
+    @keyframes rotate_map2 {
+        from {
+            transform: translate(-50%,-50%)
+            rotate(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) 
+            rotate(360deg);
+        }
+    }
+    @keyframes rotate_map3 {
+        // 逆时针旋转 -360deg
+        from {
+            transform: translate(-50%, -50%)
+             rotate(0deg);
+        }
+
+        to {
+            transform: translate(-50%, -50%)
+             rotate(-360deg);
+        }
+    }
+    .chart {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10.125rem;
+        // background: pink;
+        background-size: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 42px !important; // 1024/24=42 
+    }
+}
+@media screen and (min-width: 1920px) {
+    html {
+        font-size: 80px !important;  
+    }
+}
+
+div {
+    color:rgb(255, 191, 0)
+}
