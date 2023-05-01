@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+<img id="myImage" src="images/china.png" alt="Image">
+<div id="myDiv" style="display: none;">
+<canvas id="myCanvas" width="300" height="300"></canvas>
+</div>
+</body>
+<style>
+    #myCanvas {
+        background-image: url("images/map.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+<script>
+    var image = document.getElementById("myImage"); // 获取图片元素
+    var div = document.getElementById("myDiv"); // 获取 div 元素
+    image.addEventListener("click", function () { // 为图片元素添加一个点击事件监听器
+            if (div.style.display == "none") { // 如果 div 元素是隐藏的
+                div.style.display = "block"; // 将 div 元素显示出来
+                div.style.position = "absolute"; // 设置 div 元素的定位方式为绝对定位
+                div.style.left = "50%"; // 设置 div 元素的左边距为50%
+                div.style.top = "50%"; // 设置 div 元素的上边距为50%
+                div.style.transform = "translate(-50%, -50%)"; // 使用 transform 属性将 div 元素移动到屏幕中央
+                draw(); // 调用 draw 函数开始绘制弹幕
+            } else { // 如果 div 元素是显示的
+                div.style.display = "none"; // 将 div 元素隐藏起来
+                cancelAnimationFrame(draw); // 取消 draw 函数的循环调用，停止绘制弹幕
+            }
+        });
+
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = "30px Arial";
+    var texts = ["这是一条弹幕", "这是另一条弹幕", "这是第三条弹幕"]; // 弹幕文本数组
+    var danmu = {}; // 弹幕位置和速度对象
+    for (var i = 0; i < texts.length; i++) { // 为每条弹幕生成随机位置和速度
+        var x = canvas.width + Math.floor(Math.random() * 1000);
+        var y = Math.floor(Math.random() * canvas.height);
+        var speed = 2;
+        var r = Math.floor(Math.random() * 256); // 随机生成一个0到255之间的整数
+        var g = Math.floor(Math.random() * 256); // 随机生成一个0到255之间的整数
+        var b = Math.floor(Math.random() * 256); // 随机生成一个0到255之间的整数
+        var color = "rgb(" + r + ", " + g + ", " + b + ")"; // 随机生成一个rgb颜色值
+        danmu[i] = { x: x, y: y, speed: speed ,color: color};
+    }
+    var id;
+    function draw() {
+        cancelAnimationFrame(id); // 取消之前的循环调用
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
+        for (var i = 0; i < texts.length; i++) { // 遍历所有的弹幕
+            ctx.fillStyle = danmu[i].color;
+            ctx.fillText(texts[i], danmu[i].x, danmu[i].y); // 绘制弹幕文本
+            danmu[i].x -= danmu[i].speed; // 更新弹幕横坐标
+            if (danmu[i].x < -ctx.measureText(texts[i]).width) { // 如果弹幕超出画布左边界
+                danmu[i].x = canvas.width + Math.floor(Math.random() * 1000); // 随机生成一个新的横坐标
+                danmu[i].y = Math.floor(Math.random() * canvas.height); // 随机生成一个新的纵坐标
+                danmu[i].speed = 2; // 随机生成一个新的速度
+            }
+        }
+        id = requestAnimationFrame(draw); // 循环调用 draw 函数
+    }
+    draw();
+
+</script>
+</body>
+
+</html>

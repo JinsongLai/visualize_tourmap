@@ -49,14 +49,14 @@
                     <div class="chart">柱状图</div>
                     <div class="panel-fooster"></div>
                 </div>
-                <div class="panel river">
-                    <h2>河流图--就业行情</h2>
-                    <div class="chart">河流图</div>
-                    <div class="panel-fooster"></div>
-                </div>
                 <div class="panel rose">
                     <h2>玫瑰图--就业行情</h2>
                     <div class="chart">玫瑰图</div>
+                    <div class="panel-fooster"></div>
+                </div>
+                <div class="panel river">
+                    <h2>河流图--就业行情</h2>
+                    <div class="chart">河流图</div>
                     <div class="panel-fooster"></div>
                 </div>
             </div>
@@ -86,22 +86,32 @@
             </div>
             </div>
             <div class="column">
-                <div class="panel bar">
-                    <h2>柱状图--就业行情</h2>
-                    <div class="chart"></div>
+                <div class="panel multiline">
+                    <h2>多线图--就业行情</h2>
+                    <div class="chart">多线图</div>
                     <div class="panel-fooster"></div>
                 </div>
-                <div class="panel line">
-                    <h2>柱状图--就业行情</h2>
-                    <div class="chart">图表</div>
+                <div class="panel bubble">
+                    <h2>气泡图--就业行情</h2>
+                    <div class="chart">气泡图</div>
                     <div class="panel-fooster"></div>
                 </div>
                 <div class="panel wordcloud">
-                    <h2>柱状图--就业行情</h2>
-                    <div class="chart">图表</div>
+                    <h2>词云图--就业行情</h2>
+                    <div class="chart">词云图</div>
                     <div class="panel-fooster"></div>
                 </div>
             </div>
+        <div id="myDiv" style="display: none;">
+            <canvas id="myCanvas" width="500" height="540"></canvas>
+        </div>
+        <style>
+            #myCanvas {
+                background-image: url("images/map.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        </style>
         </section>
         <script src="js/flexible.js"></script>
         <script src="js/china.js"></script>
@@ -109,20 +119,6 @@
         <script src="js/flymap.js"></script>
         <script src="js/timeline.js"></script>
         <script>
-            var barChart = echarts.init(document.querySelector(".bar .chart"));
-            console.log(barChart);
-            // var timeline = echarts.init(document.querySelector(".timeline"))
-            // timeline.on("timelinechanged", function (timeLineIndex) {
-            //     console.log(timeLineIndex) // timeLineIndex为您的单个时间轴内容
-            //     console.log(timeLineIndex.currentIndex) // 时间轴下标
-            // });
-            console.log(barChart._chartsMap["_ec_\u0000series\u00000\u00000_series.bar"]._data._store._chunks);
-            barChart.setOption({
-                    series: [{
-                        data: [0, 20, 150, 80, 70, 110, 130]
-                    }]
-             });
-
 
         </script>
     </body>

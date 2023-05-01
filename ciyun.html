@@ -1015,7 +1015,11 @@
                 myChart.setOption({
                     // backgroundColor: '#fff',
                     tooltip: {
-                        show: false
+                        position: function (point, params, dom, rect, size) {
+                            return [size.viewSize[0] - point[0], point[1]];
+                        },
+                        show: true,
+                        trigger: 'item'
                     },
                     series: [{
                         type: 'wordCloud',
