@@ -255,7 +255,7 @@
     // 自适应配置
     window.addEventListener("resize", function () {
         myChart.resize();
-    })
+    });
 })();
 
 // 多线图 ---> 初始化
@@ -1009,6 +1009,7 @@ var chinaword = [
         "value": 170
     }
 ];
+for (let i = 0; i < chinaword.length; i++) { chinaword[i]["value"] *= 20 }
 (function () {
     console.log(chinaword);
     var data = {
