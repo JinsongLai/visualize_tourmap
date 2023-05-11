@@ -405,15 +405,13 @@ var sheight = window.screen.height;
             var div = document.getElementById("myDiv"); // 获取 div 元素
             // 点击事件被bound多次 先解除 再绑定
             myChart.off('click').on("click", function (event) { // 为图片元素添加一个点击事件监听器
-                
+                document.getElementById('myCanvas').style.backgroundSize = swidth*0.39+"px "+sheight*0.75+"px";
                 console.log("-->弹幕");
                 if (div.style.display == "none") { // 如果 div 元素是隐藏的
                     div.style.display = "block"; // 将 div 元素显示出来
                     div.style.position = "absolute"; // 设置 div 元素的定位方式为绝对定位
                     div.style.left = "50%"; // 设置 div 元素的左边距为50%
                     div.style.top = "50%"; // 设置 div 元素的上边距为50%
-                    div.style.width = swidth*0.391;
-                    div.style.height = sheight*0.75;
                     div.style.transform = "translate(-50%, -27%)"; // 使用 transform 属性将 div 元素移动到屏幕中央
                     draw(); // 调用 draw 函数开始绘制弹幕
                 } else { // 如果 div 元素是显示的

@@ -601,7 +601,7 @@ var data = [
     var myChart = echarts.init(document.querySelector('.bubble .chart'));
     myChart.resize({
         width: swidth * 0.2625,
-        height: sheight * 0.222
+        height: sheight * 0.28
     });
     var itemStyle = {
         normal: {
