@@ -1,3 +1,5 @@
+var swidth = window.screen.width;
+var sheight = window.screen.height;
 // 模拟飞行路线模块地图模块
 
 (function () {
@@ -410,6 +412,8 @@
                     div.style.position = "absolute"; // 设置 div 元素的定位方式为绝对定位
                     div.style.left = "50%"; // 设置 div 元素的左边距为50%
                     div.style.top = "50%"; // 设置 div 元素的上边距为50%
+                    div.style.width = swidth*0.391;
+                    div.style.height = sheight*0.75;
                     div.style.transform = "translate(-50%, -27%)"; // 使用 transform 属性将 div 元素移动到屏幕中央
                     draw(); // 调用 draw 函数开始绘制弹幕
                 } else { // 如果 div 元素是显示的

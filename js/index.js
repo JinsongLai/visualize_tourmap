@@ -1,3 +1,6 @@
+var swidth = window.screen.width;
+var sheight = window.screen.height;
+
 // 柱状图表
 (function(){
     var myChart = echarts.init(document.querySelector(".bar .chart"));
@@ -262,8 +265,8 @@
 (function(){
 var myChart = echarts.init(document.querySelector('.multiline .chart'));
 myChart.resize({
-    width: 336,
-    height: 160
+    width: swidth*0.2625,
+    height: sheight*0.222
 });
 var option = {
     // backgroundColor: '#080b30',
@@ -597,8 +600,8 @@ var data = [
 (function () {
     var myChart = echarts.init(document.querySelector('.bubble .chart'));
     myChart.resize({
-        width: 336,
-        height: 200
+        width: swidth * 0.2625,
+        height: sheight * 0.222
     });
     var itemStyle = {
         normal: {
